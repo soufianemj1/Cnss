@@ -1,5 +1,4 @@
 const Rembourssement = require("../models/rembourssementModel");
-const Patient = require("../models/patientModel");
 
 
 exports.create = (req, res) => {

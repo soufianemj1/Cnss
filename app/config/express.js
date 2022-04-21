@@ -5,9 +5,11 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var path = require('path');
+const cookieParser = require('cookie-parser');
 const PatientRoute = require('../routes/patientRoute');
 const MedicamentRoute = require('../routes/medicamentRoute');
 const RembourssementRoute = require('../routes/rembourssementRoute');
+const AdminRoute = require('../routes/adminRouter');
 
 // var glob = require('glob');
 
@@ -21,6 +23,8 @@ module.exports = function(){
         res.header("Access-Control-Allow-Methods","PUT, GET, POST, OPTIONS, DELETE");
         next();
     });
+
+    app.use(cookieParser());
 
     app.use(express.static(path.join(__dirname, '../uploads')));
 
@@ -40,6 +44,7 @@ module.exports = function(){
     app.use('/api/patient', PatientRoute);
     app.use('/api/medicament', MedicamentRoute);
     app.use('/api/remboursement', RembourssementRoute);
+    app.use('/api/admin', AdminRoute);
 
 
     return app;

@@ -5,6 +5,7 @@ var express = require('./app/config/express');
 var db = mongoose();
 var app = express();
 
+
 var http = require('http').createServer(app);
 
 // TODO: Starting the server
